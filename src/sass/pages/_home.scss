@@ -1,0 +1,22 @@
+
+.header {
+    grid-row: header-start / header-end;
+    grid-column: main-start / main-end;
+
+    display: flex;
+
+    background-color: var(--color-primary);
+    color: var(--color-text);
+}
+
+.main {
+    grid-row: main-start / main-end;
+    grid-column: main-start / main-end;
+}
+
+.footer {
+    grid-row: footer-start / footer-end;
+    grid-column: main-start / main-end;
+
+
+}

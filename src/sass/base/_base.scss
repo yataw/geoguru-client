@@ -1,0 +1,47 @@
+*, *::after, *::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  // this defines what 1 rem is
+  font-size: 62.5%; // 1rem = 10px
+
+/*  @include respond(big-desktop) {
+    font-size: 75%; // 1 rem = 12px
+  }
+
+  @include respond(tab-land) {
+    font-size: 56.25%; // 1 rem = 9px
+  }
+
+  @include respond(tab-port) {
+    font-size: 50%; // 1 rem = 8px
+  }*/
+}
+
+.root {
+  font-size: 1.5rem;
+  height: 100%;
+
+  display: grid;
+  grid-template-columns: [page-start]  2fr [main-start] repeat(10, [col-start] minmax(min-content, 1fr) [col-end]) [main-end] 2fr [page-end];
+  grid-template-rows: [header-start] minmax(2rem, 5vh) [header-end main-start] 1fr [main-end footer-start] minmax(2rem, 5vh) [footer-end page-end];
+}
+
+:root {
+  --color-primary: #212529;
+  --color-secondary: #2b2f34;
+  --color-primary-light: #CFD8DC;
+  --color-primary-dark: #455A64;
+  --color-accent: #03A9F4;
+  --color-text: #FFFFFF;
+  --color-text-secondary: #757575;
+}
+
+body {
+  box-sizing: border-box;
+  background-image: linear-gradient(to left top, var(--color-primary-light), var(--color-primary-dark));
+  height: 100vh;
+}

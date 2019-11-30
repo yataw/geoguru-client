@@ -1,22 +1,104 @@
-.App {
-  text-align: center;
-}
+/**
+0 - 600px:        Phone
+600 - 900px:      Tablet portrait
+900 - 1200px:     Tablet landscape
+[1200-1800] is where our normal styles apply
+1800px+:          Big desktop
+ */
+/**
+$breakpoint argument choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
 
-.App-logo {
-  height: 40vmin;
-}
+OEDER: Base + typegraphy > general layout _ grid > page layout > components
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+1em = 16px
+ */
+*, *::after, *::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  font-size: 62.5%;
+  /*  @include respond(big-desktop) {
+    font-size: 75%; // 1 rem = 12px
+  }
+
+  @include respond(tab-land) {
+    font-size: 56.25%; // 1 rem = 9px
+  }
+
+  @include respond(tab-port) {
+    font-size: 50%; // 1 rem = 8px
+  }*/ }
+
+.root {
+  font-size: 1.5rem;
+  height: 100%;
+  display: grid;
+  grid-template-columns: [page-start] 2fr [main-start] repeat(10, [col-start] minmax(min-content, 1fr) [col-end]) [main-end] 2fr [page-end];
+  grid-template-rows: [header-start] minmax(2rem, 5vh) [header-end main-start] 1fr [main-end footer-start] minmax(2rem, 5vh) [footer-end page-end]; }
+
+:root {
+  --color-primary: #212529;
+  --color-secondary: #2b2f34;
+  --color-primary-light: #CFD8DC;
+  --color-primary-dark: #455A64;
+  --color-accent: #03A9F4;
+  --color-text: #FFFFFF;
+  --color-text-secondary: #757575; }
+
+body {
+  box-sizing: border-box;
+  background-image: linear-gradient(to left top, var(--color-primary-light), var(--color-primary-dark));
+  height: 100vh; }
+
+.user-nav {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+  align-self: stretch;
+  flex: 0 0 100%;
+  align-items: center; }
+  .user-nav__settings, .user-nav__statistics, .user-nav__user {
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+    cursor: pointer;
+    padding: 0 1rem;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom-color .2s; }
+    .user-nav__settings:hover, .user-nav__statistics:hover, .user-nav__user:hover {
+      background-color: var(--color-secondary);
+      border-bottom: 2px solid var(--color-accent); }
+  .user-nav__statistics {
+    justify-self: flex-end;
+    margin-left: auto; }
+  .user-nav__user {
+    display: flex;
+    align-items: center; }
+  .user-nav__photo {
+    width: 3rem;
+    height: 3rem;
+    fill: var(--color-accent);
+    margin-right: 0.5rem; }
+  .user-nav__icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    fill: var(--color-accent); }
 
-.App-link {
-  color: #09d3ac;
-}
+.header {
+  grid-row: header-start / header-end;
+  grid-column: main-start / main-end;
+  display: flex;
+  background-color: var(--color-primary);
+  color: var(--color-text); }
+
+.main {
+  grid-row: main-start / main-end;
+  grid-column: main-start / main-end; }
+
+.footer {
+  grid-row: footer-start / footer-end;
+  grid-column: main-start / main-end; }
