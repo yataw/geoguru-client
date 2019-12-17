@@ -97,17 +97,22 @@ body {
 .leaderboard {
   grid-column: 1 / 4;
   background-color: var(--color-primary);
-  color: var(--color-text); }
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column; }
   .leaderboard__header {
-    padding: 1rem;
+    flex: 0 0 6rem;
     display: flex;
     align-items: center;
+    justify-content: center;
     font-size: var(--font-size-big);
     font-weight: 600; }
   .leaderboard__trophy {
     width: 4rem;
     height: 4rem;
     fill: #03A9F4; }
+  .leaderboard__table {
+    flex: 1 0; }
 
 .game {
   grid-column: 4 / 9;
@@ -257,8 +262,8 @@ body {
 
 .table {
   padding: 0 1rem;
-  overflow: hidden;
-  border: 2px solid orangered; }
+  margin: 0 auto;
+  overflow: hidden; }
   .table-viewport {
     height: 10rem;
     overflow-x: hidden; }
@@ -274,12 +279,7 @@ body {
 .statusbar {
   position: relative;
   padding-top: 1rem;
-  color: var(--color-text);
-  /*    &__line {
-        height: 2rem;
-        flex: 0 0 75%;
-        background-color: #03A9F4;
-    }*/ }
+  color: var(--color-text); }
   .statusbar__current-target {
     display: flex;
     justify-content: center;
