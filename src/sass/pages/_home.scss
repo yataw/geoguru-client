@@ -12,11 +12,33 @@
 .main {
     grid-row: main-start / main-end;
     grid-column: main-start / main-end;
+
+    display: grid;
+    grid-template-columns: repeat(11, [col-start] minmax(min-content, 1fr));
+    grid-column-gap: 2rem;
+
+    & > * {
+        margin-top: 4rem;
+        margin-bottom: 2rem;
+    }
 }
 
 .footer {
     grid-row: footer-start / footer-end;
     grid-column: main-start / main-end;
 
+    position: relative;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    color: var(--color-text);
+}
+
+.version {
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
