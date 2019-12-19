@@ -6,7 +6,6 @@ const log = require('../logger')(module);
 const Game = require('../game/game');
 const Events = config.get('events');
 
-
 module.exports = function (server, log) {
     const io = require('socket.io')(server, {logger: log});
     const game = new Game();
@@ -24,10 +23,6 @@ module.exports = function (server, log) {
             socket.broadcast.emit(Events.CHATMESSAGE, {id, text, author: name, me: false});
             socket.emit(Events.CHATMESSAGE, {id, text, author: name, me: true});
         })
-
-        socket.on('disconnect', () => {
-            socket.broadcast.emit('leave', username);
-        });
     });
 
     return io;
