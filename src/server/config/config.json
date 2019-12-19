@@ -1,5 +1,5 @@
 {
-  "port": 9000,
+  "port": 8080,
   "mongoose": {
     "uri": "mongodb://localhost:27017/geoguru",
     "options": {
