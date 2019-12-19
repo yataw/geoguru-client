@@ -4,16 +4,20 @@
   "private": true,
   "dependencies": {
     "@material/data-table": "^4.0.0",
+    "autoprefixer": "^9.7.3",
+    "live-server": "^1.2.1",
     "material-components-web": "^4.0.0",
+    "postcss": "^7.0.25",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-scripts": "3.2.0"
+    "react-scripts": "^3.3.0"
   },
   "scripts": {
-    "start": "npm-run-all --parallel devserver watch:sass",
+    "start:sass": "npm-run-all --parallel devserver watch:sass",
     "watch:sass": "node-sass src/sass/main.scss src/App.css -w --include-path node_modules/",
     "devserver": "live-server --open=/public",
     "react:start": "react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

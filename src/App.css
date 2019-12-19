@@ -60,7 +60,12 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
   box-sizing: border-box;
   background-image: linear-gradient(to left top, var(--color-primary-light), var(--color-primary-dark));
-  height: 100vh; }
+  height: 100vh;
+  overflow: hidden; }
+
+.jvectormap-container {
+  width: 100%;
+  height: 100%; }
 
 .user-nav {
   display: flex;
@@ -374,11 +379,15 @@ body {
   align-items: flex-start; }
   .message__author {
     font-size: 1.2rem;
-    color: var(--color-primary-light); }
+    color: var(--color-primary-light);
+    word-wrap: break-word;
+    max-width: 100%; }
   .message__text {
     border-radius: 20px 20px 20px 0;
     background-image: linear-gradient(to right bottom, var(--color-primary-dark), var(--color-secondary));
-    padding: .8rem 1.8rem; }
+    padding: .8rem 1.8rem;
+    word-wrap: break-word;
+    max-width: 100%; }
   .message_my {
     align-items: flex-end; }
     .message_my .message__text {

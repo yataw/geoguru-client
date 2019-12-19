@@ -51,4 +51,11 @@ body {
   box-sizing: border-box;
   background-image: linear-gradient(to left top, var(--color-primary-light), var(--color-primary-dark));
   height: 100vh;
+  overflow: hidden;
+}
+
+// jvectormap wrong height bugfix
+.jvectormap-container  {
+  width: 100%;
+  height: 100%;
 }
