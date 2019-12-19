@@ -67,6 +67,30 @@ body {
   width: 100%;
   height: 100%; }
 
+.u-center-text {
+  text-align: center !important; }
+
+.u-margin-top-big {
+  margin-top: 8rem !important; }
+
+.u-margin-top-huge {
+  margin-top: 10rem !important; }
+
+.u-margin-bottom-big {
+  margin-bottom: 8rem !important; }
+  @media only screen and (max-width: 56.25em) {
+    .u-margin-bottom-big {
+      margin-bottom: 5rem !important; } }
+
+.u-margin-bottom-medium {
+  margin-bottom: 4rem !important; }
+  @media only screen and (max-width: 56.25em) {
+    .u-margin-bottom-medium {
+      margin-bottom: 3rem !important; } }
+
+.u-margin-bottom-small {
+  margin-bottom: 1.5rem !important; }
+
 .user-nav {
   display: flex;
   align-self: stretch;
@@ -343,13 +367,13 @@ body {
   .pie-cont__spinner {
     border-radius: 100% 0 0 100% / 50% 0 0 50%;
     z-index: 200;
-    animation: pit-rotate 5s linear forwards; }
+    animation: pit-rotate 10s linear forwards; }
   .pie-cont__filler {
     border-radius: 0 100% 100% 0 / 0 50% 50% 0;
     left: 50%;
     opacity: 0;
     z-index: 100;
-    animation: pie-opacity 5s steps(1, end) reverse forwards; }
+    animation: pie-opacity 10s steps(1, end) reverse forwards; }
   .pie-cont__mask {
     width: 50%;
     height: 100%;
@@ -357,7 +381,7 @@ body {
     background: inherit;
     opacity: 1;
     z-index: 300;
-    animation: pie-opacity 5s steps(1, end) forwards; }
+    animation: pie-opacity 10s steps(1, end) forwards; }
 
 @keyframes pit-rotate {
   0% {
@@ -395,6 +419,103 @@ body {
       background-image: linear-gradient(to right bottom, var(--color-accent), var(--color-primary-dark)); }
     .message_my .message__author {
       color: var(--color-accent); }
+
+.form {
+  position: relative;
+  width: 100%;
+  height: 100%; }
+  .form__group {
+    position: relative;
+    width: 100%; }
+    .form__group-send {
+      position: absolute;
+      right: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: all .2s;
+      width: 2rem;
+      height: 2rem;
+      fill: var(--color-text-secondary);
+      cursor: pointer; }
+      .form__group-send:hover {
+        fill: var(--color-accent); }
+  .form__group:not(:last-child) {
+    margin-bottom: 2rem; }
+  .form__input-cont {
+    position: relative;
+    width: 100%;
+    height: 100%; }
+  .form__input {
+    font-size: 1.5rem;
+    font-family: inherit;
+    color: var(--color-primary);
+    padding: 1.5rem 2rem;
+    border-radius: 2px;
+    background-color: rbga(#fff, 0.5);
+    border: none;
+    border-bottom: 3px solid transparent;
+    width: 100%;
+    display: block;
+    transition: all .3s; }
+    .form__input:focus {
+      outline: none;
+      box-shadow: 0 1rem 2rem rgba(var(--color-secondary), 0.1);
+      border-bottom: 3px solid var(--color-accent); }
+    .form__input:focus:invalid {
+      border-bottom: 3px solid var(--color-secondary); }
+    .form__input::-webkit-input-placeholder {
+      color: var(--color-secondary); }
+  .form__label {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-left: 2rem;
+    margin-top: .7rem;
+    display: block;
+    transition: all .3s; }
+  .form__input:placeholder-shown + .form__label {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4rem); }
+
+.popup {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all .3s;
+  color: var(--color-text); }
+  .popup__content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    height: 20%;
+    background-color: #fff;
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    overflow: hidden;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.25);
+    transition: all .5s .2s;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: linear-gradient(105deg, rgba(0, 0, 0, 0.7), rgba(3, 123, 194, 0.7)), url(img/hero.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat; }
+  .popup:target {
+    opacity: 1;
+    visibility: visible; }
+  .popup:target .popup__content {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1); }
 
 .git-cont {
   display: flex;

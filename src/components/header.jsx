@@ -22,7 +22,7 @@ class Header extends Component {
                         <svg className="user-nav__photo">
                             <use xlinkHref="/img/sprite/sprite.svg#icon-account_circle"></use>
                         </svg>
-                        <div className="user-nav__name"> John Smith</div>
+                        <div className="user-nav__name">{this.props.name}</div>
                     </div>
                 </nav>
             </header>

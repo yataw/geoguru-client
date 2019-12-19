@@ -19,8 +19,6 @@ class Main extends React.Component {
             markerAddingAvailable: false,
             messages: []
         }
-
-        this.socket.on('chatmessage', this.addMessage);
     }
 
     addMessage = (message) => {
@@ -41,6 +39,12 @@ class Main extends React.Component {
         }));
 
         this.setState({...nextProps, markers, markerAddingAvailable: !answer && !!task});
+
+        if (this.socket !== nextProps.socket)
+        {
+            this.socket = nextProps.socket;
+            this.socket.on('chatmessage', this.addMessage);
+        }
     }
 
     onAddMarker = marker => {

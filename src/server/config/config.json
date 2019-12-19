@@ -21,6 +21,7 @@
   },
   "events": {
     "CONNECTION": "connection",
+    "SETNAME": "setname",
     "SIGNIN": "signin",
     "SIGNOUT": "signout",
     "DISCONNECT": "disconnect",
@@ -32,8 +33,8 @@
   "gameParameters": {
     "tasksInSet": 10,
     "phasesDuration": {
-      "active": 1000,
-      "passive": 1000
+      "active": 10000,
+      "passive": 10000
     }
   },
   "earthConsts": {

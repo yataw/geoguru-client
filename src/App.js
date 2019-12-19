@@ -7,6 +7,7 @@ import utils from './utils';
 import Header from "./components/header";
 import Main from "./components/main";
 import Footer from "./components/footer";
+import Popup from "./components/popup";
 
 
 // TODO data validation
@@ -21,32 +22,46 @@ class App extends React.Component {
             utils.scroll.addToAll();
         });
 
-        const port = 9000;
-        const origin = 'http://localhost:';
-
-        this.socket = window.io.connect(origin + port);
         this.state = {
             players: {},
             votes: {},
             answer: null,
-            task: null
+            task: null,
+            showPopup: true,
+            socket: {on: () => null, emit: () => null},
+            name: ''
         };
-
-        this.socket.on('taskstart', task => this.setState({task, answer: null, votes: {}}));
-        this.socket.on('taskend', ({answer, votes, players}) => this.setState({answer, votes, players, task: null}))
     }
+
+    onChooseName = (name) => {
+        const port = 9000;
+        const origin = 'http://localhost:';
+        const socket = window.io.connect(origin + port);
+
+        socket.on('taskstart', task => this.setState({task, answer: null, votes: {}}));
+        socket.on('taskend', ({answer, votes, players}) => this.setState({answer, votes, players, task: null}));
+        socket.emit("setname", {name});
+
+        this.setState({
+            showPopup: false,
+            socket,
+            name
+        })
+    };
 
     render() {
         return (
             <React.Fragment>
-                <Header></Header>
+                {this.state.showPopup ? <Popup onChooseName={this.onChooseName}></Popup> : null}
+                <Header name={this.state.name}/>
                 <Main
-                    socket={this.socket}
+                    socket={this.state.socket}
                     players={this.state.players}
                     votes={this.state.votes}
                     answer={this.state.answer}
-                    task={this.state.task}></Main>
-                <Footer></Footer>
+                    task={this.state.task}>
+                </Main>
+                <Footer />
 
                 <div className="version">v1.0</div>
             </React.Fragment>

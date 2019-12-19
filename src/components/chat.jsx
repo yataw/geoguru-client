@@ -46,8 +46,6 @@ class Chat extends React.Component {
         const el = document.getElementById('chat-message-box');
         const scrollable = utils.scroll.add(el).getScrollElement();
 
-        console.log(scrollable.scrollTop, scrollable.scrollHeight)
-
         scrollable.addEventListener('scroll', () => this.onScroll(scrollable));
         if (this.scroll.auto)
             scrollable.scrollIntoView(false);

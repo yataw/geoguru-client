@@ -13,15 +13,18 @@ module.exports = function (server, log) {
     io.set('origins', '*:*');
     io.on(Events.CONNECTION, socket => {
         // TODO authorization
-        const name = 'default name';
-        const color = '000';
-        game.addPlayer({id: socket.id, socket, name, color});
 
-        socket.on(Events.CHATMESSAGE, text => {
-            const id = Math.random();
+        socket.on(Events.SETNAME, ({name}) => {
+            const color = '000';
 
-            socket.broadcast.emit(Events.CHATMESSAGE, {id, text, author: name, me: false});
-            socket.emit(Events.CHATMESSAGE, {id, text, author: name, me: true});
+            game.addPlayer({id: socket.id, socket, name, color});
+
+            socket.on(Events.CHATMESSAGE, text => {
+                const id = Math.random();
+
+                socket.broadcast.emit(Events.CHATMESSAGE, {id, text, author: name, me: false});
+                socket.emit(Events.CHATMESSAGE, {id, text, author: name, me: true});
+            })
         })
     });
 

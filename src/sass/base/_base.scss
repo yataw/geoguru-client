@@ -30,6 +30,9 @@ html {
   grid-template-rows: [header-start] 5vh [header-end main-start] 90vh [main-end footer-start] 5vh [footer-end page-end];
 }
 
+$color-white: #fff;
+$color-black: #000;
+
 :root {
   --color-primary: #212529;
   --color-secondary: #2b2f34;
