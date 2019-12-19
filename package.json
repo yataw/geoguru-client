@@ -17,7 +17,7 @@
     "watch:sass": "node-sass src/sass/main.scss src/App.css -w --include-path node_modules/",
     "devserver": "live-server --open=/public",
     "react:start": "react-scripts start",
-    "start": "react-scripts start",
+    "start": "supervisor src/server",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
