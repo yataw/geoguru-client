@@ -17,7 +17,7 @@ const server = require('http').createServer(app);
 
 // connect socket
 const io = require('./socket')(server, log);
-const port = config.get('port');
+const port =  process.env.PORT || config.get('port');
 
 app.locals.io = io;
 server.listen(port, () => console.log(`listening on ${port}`));
