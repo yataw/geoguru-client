@@ -34,9 +34,7 @@ class App extends React.Component {
     }
 
     onChooseName = (name) => {
-        const port = 8080;
-        const origin = 'http://localhost:';
-        const socket = window.io.connect(origin + port);
+        const socket = window.io.connect('');
 
         socket.on('taskstart', task => this.setState({task, answer: null, votes: {}}));
         socket.on('taskend', ({answer, votes, players}) => this.setState({answer, votes, players, task: null}));
